@@ -1,0 +1,15 @@
+{% extends 'base/main.html' %}
+{%load static%}
+{%block content%}
+
+    <div class="main-container">
+        <h3>Post Form</h3>
+        <form action="" method="POST" enctype="multipart/form-data">
+            {%csrf_token%}
+            <p>Bạn có thật sự muốn xóa bài viết <br>
+            {{item}} </p>
+            <input type="submit" value="Xóa" class="btn btn-danger">
+        </form>
+    </div>
+
+{%endblock content%}

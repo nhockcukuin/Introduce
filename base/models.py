@@ -10,7 +10,7 @@ class Tag(models.Model):
 class Post(models.Model):
     headline = models.CharField(max_length=200)
     sub_headline = models.CharField(max_length=200,null=True,blank=True)
-    #thumbnail
+    thumbnail = models.ImageField(null=True, blank = True, upload_to = "images",default="/images/1.jpg")
     body = models.TextField(null=True,blank=True)
     created = models.TimeField(auto_now_add=True)
     activity = models.BooleanField(default=False)
