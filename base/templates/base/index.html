@@ -1,0 +1,183 @@
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	
+	<title>Nguyễn Vương</title>
+
+	<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1" />
+
+	<link href="https://fonts.googleapis.com/css2?family=Russo+One&display=swap" rel="stylesheet">
+
+	<link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@500&family=Russo+One&display=swap" rel="stylesheet">
+
+	<link rel="stylesheet" type="text/css" href="{% static 'css/styles.css' %}">
+	<link id="theme-style" rel="stylesheet" type="text/css" href="">
+</head>
+<body>
+	<section class="s1">
+		<div class="main-container">
+			<div class="greeting-wrapper">
+				<h1>Xin chào, tôi là Vương</h1>
+			</div>
+
+
+			<div class="intro-wrapper">
+				{%include 'base/nav.html'%}
+
+				<div class="left-column">
+					<img id="profile_pic" src="{%static 'images/me.jpg'%}">
+					<h5 style="text-align: center;line-height: 0;">Giao diện</h5>
+
+					<div id="theme-options-wrapper">
+						<div data-mode="light" id="light-mode" class="theme-dot"></div>
+						<div data-mode="blue" id="blue-mode" class="theme-dot"></div>
+						<div data-mode="green" id="green-mode" class="theme-dot"></div>
+						<div data-mode="purple" id="purple-mode" class="theme-dot"></div>
+					</div>
+
+					<p id="settings-note">*Cài đặt giao diện<br>vui lòng chọn</p>
+				</div>
+
+				<div class="right-column">
+
+					<div id="preview-shadow">
+						<div id="preview">
+							<div id="corner-tl" class="corner"></div>
+							<div id="corner-tr" class="corner"></div>
+							<h3>Tôi là ai ?</h3>
+							<p>Tôi là người thích công nghệ, học công nghệ để thực hiện đam mê</p>
+							<div id="corner-br" class="corner"></div>
+							<div id="corner-bl" class="corner"></div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<section class="s2">
+		<div class="main-container">
+
+			<div class="about-wrapper">
+				<div class="about-me">
+					<h4>Mục đích xây dựng website</h4>
+
+					<p>Tôi xây dựng website trong quá trình học lập trình backend với python - django</p>
+
+					<p>Website được xây dựng trong tình trạng dịch bệnh COVID-19 trở lại &
+					 tôi đang bị cách ly</p>
+
+
+					<hr>
+
+					<h4>Sở thích</h4>
+
+					<p>Đọc sách, chơi game, code, gym và võ thuật</p>
+
+					<div id="skills">
+						<ul>
+							<li>Python</li>
+							<li>Django</li>
+							<li>C#</li>
+						</ul>
+
+						<ul>
+							<li>SQL Server/ MySQL</li>
+							<li>jQuery</li>
+							<li>HTML/CSS</li>
+						</ul>
+
+					</div>
+
+				</div>
+
+				
+				<div class="social-links">
+					<img id="social_img" src="{%static 'images/fb.jpg'%}">
+					<h3>Liên hệ tôi trên Facebook & SĐT</h3>
+
+					<a target="_blank" href="https://www.facebook.com/nhock.magenta">Facebook: Nguyễn Vương</a>
+					<br>
+					<a target="_blank">SĐT: 034 724 1673</a>
+				</div>
+			</div>
+
+		</div>
+	</section>
+
+	<section class="s1">
+		<div class="main-container">
+			<h3 style="text-align: center;">Bài viết cá nhân</h3>
+
+			<div class="post-wrapper">
+
+				<div>
+					<div class="post">
+						<img class="thumbnail" src="{%static 'images/nha-gia-kim.jpg'%}">
+						<div class="post-preview">
+							<h6 class="post-title">Nhà giả kim</h6>
+							<p class="post-intro">Hành trình phiêu lưu của cậu bé chăn cừu</p>
+							<a href="post.html">Đọc bài</a>
+						</div>
+					</div>
+				</div>
+
+				<div>
+					<div class="post">
+						<img class="thumbnail" src="{%static 'images/bmw.jpg'%}">
+						<div class="post-preview">
+							<h6 class="post-title">BMW S1000RR</h6>
+							<p class="post-intro">Cá mập lên bờ, superbike đầy sức mạnh đến từ hãng xe Đức</p>
+							<a href="post.html">Đọc bài</a>
+						</div>
+					</div>
+				</div>
+
+				<div>
+					<div class="post">
+						<img class="thumbnail" src="{%static 'images/5h.jpg'%}">
+						<div class="post-preview">
+							<h6 class="post-title">Ngủ dậy lúc 5h sáng</h6>
+							<p class="post-intro">Điều gì xảy ra khi thức dậy lúc 5h sáng</p>
+							<a href="post.html">Đọc bài</a>
+						</div>
+					</div>
+				</div>
+
+			</div>
+			<p style='text-align: center;'><a href="{%url 'posts'%}">Xem thêm</a></p>
+		</div>
+	</section>
+
+	<section class="s2">
+		<div class="main-container">
+			<a href=""></a>
+			<h3 style="text-align: center;">Gửi phản hồi</h3>
+
+			<form id="contact-form">
+				<a name="contact"></a>
+
+				<label>Họ & tên</label>
+				<input class="input-field" type="text" name="name">
+
+				<label>Tiêu đề</label>
+				<input class="input-field" type="text" name="subject">
+
+				<label>Email</label>
+				<input class="input-field" type="text" name="email">
+
+				<label>Nội dung</label>
+				<textarea class="input-field" name="message"></textarea>
+
+				<input id="submit-btn" type="submit" value="Gửi">
+			</form>
+		</div>
+	</section> 
+    <script type="text/javascript">
+		let static = "{% static 'css' %}"
+	</script>
+	<script type="text/javascript" src="{%static 'js/script.js'%}"></script>
+</body>
+</html>

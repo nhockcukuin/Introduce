@@ -1,0 +1,11 @@
+{% extends 'base/main.html' %}
+{%load static%}
+{% block content %}
+
+    <div class="main-container">
+        <h1>Post Title</h1>
+        <img src="{%static 'images/1.jpg'%}" alt="">
+        <p>{% lorem 5 b random %}</p>
+    </div>
+
+{% endblock content %}
