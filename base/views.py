@@ -1,5 +1,10 @@
 from django.shortcuts import render,redirect
+from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
+from django.core.paginator import Paginator,EmptyPage,PageNotAnInteger
+from django.core.mail import EmailMessage
+from django.conf import settings
+from django.template.loader import render_to_string
 # Create your views here.
 from .models import Post
 from .forms import PostForm
@@ -14,6 +19,14 @@ def posts(request):
     posts = Post.objects.filter(activity=True)
     myFilter = PostFilter(request.GET,queryset=posts)
     posts = myFilter.qs
+    page = request.GET.get('page')
+    paginator = Paginator(posts,3)
+    try:
+        posts = paginator.page(page)
+    except PageNotAnInteger:
+        posts = paginator.page(1)
+    except EmptyPage:
+        posts = paginator.page(paginator.num_pages)
     context = {'posts':posts,'myFilter':myFilter}
     return render(request, 'base/posts.html',context)
 
@@ -57,3 +70,21 @@ def deletePost(request,pk):
         return redirect('posts')
     context = {'item':post}
     return render(request,'base/delete_form.html',context)
+
+def emailSend(request):
+    if request.method == 'POST':
+        template = render_to_string('base/email_template.html',
+        {
+            'name':request.POST['name'],
+            'email':request.POST['email'],
+            'message':request.POST['message'],
+        })
+        email = EmailMessage(
+            request.POST['subject'],
+            template,
+            settings.EMAIL_HOST_USER,
+            ['nhockcukuin02@gmail.com'],
+        )
+        email.fail_silently = False
+        email.send()
+    return render(request,'base/email_send.html')

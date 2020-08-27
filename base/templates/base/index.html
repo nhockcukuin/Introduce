@@ -136,9 +136,9 @@
 			<a href=""></a>
 			<h3 style="text-align: center;">Gửi phản hồi</h3>
 
-			<form id="contact-form">
+			<form id="contact-form" method="POST" action="{%url 'email_send'%}">
+				{%csrf_token%}
 				<a name="contact"></a>
-
 				<label>Họ & tên</label>
 				<input class="input-field" type="text" name="name">
 
