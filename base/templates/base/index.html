@@ -112,40 +112,20 @@
 			<h3 style="text-align: center;">Bài viết cá nhân</h3>
 
 			<div class="post-wrapper">
-
+				{%for posts in posts%}
 				<div>
+				
 					<div class="post">
-						<img class="thumbnail" src="{%static 'images/nha-gia-kim.jpg'%}">
+						<img class="thumbnail" src="{{posts.thumbnail.url}}">
 						<div class="post-preview">
-							<h6 class="post-title">Nhà giả kim</h6>
-							<p class="post-intro">Hành trình phiêu lưu của cậu bé chăn cừu</p>
-							<a href="post.html">Đọc bài</a>
+							<h6 class="post-title">{{posts.headline}}</h6>
+							<p class="post-intro">{{posts.sub_headline}}</p>
+							<a href="{%url 'post' posts.slug%}">Đọc bài</a>
 						</div>
 					</div>
+					
 				</div>
-
-				<div>
-					<div class="post">
-						<img class="thumbnail" src="{%static 'images/bmw.jpg'%}">
-						<div class="post-preview">
-							<h6 class="post-title">BMW S1000RR</h6>
-							<p class="post-intro">Cá mập lên bờ, superbike đầy sức mạnh đến từ hãng xe Đức</p>
-							<a href="post.html">Đọc bài</a>
-						</div>
-					</div>
-				</div>
-
-				<div>
-					<div class="post">
-						<img class="thumbnail" src="{%static 'images/5h.jpg'%}">
-						<div class="post-preview">
-							<h6 class="post-title">Ngủ dậy lúc 5h sáng</h6>
-							<p class="post-intro">Điều gì xảy ra khi thức dậy lúc 5h sáng</p>
-							<a href="post.html">Đọc bài</a>
-						</div>
-					</div>
-				</div>
-
+				{%endfor%}
 			</div>
 			<p style='text-align: center;'><a href="{%url 'posts'%}">Xem thêm</a></p>
 		</div>
@@ -156,9 +136,9 @@
 			<a href=""></a>
 			<h3 style="text-align: center;">Gửi phản hồi</h3>
 
-			<form id="contact-form">
+			<form id="contact-form" method="POST" action="{%url 'email_send'%}">
+				{%csrf_token%}
 				<a name="contact"></a>
-
 				<label>Họ & tên</label>
 				<input class="input-field" type="text" name="name">
 

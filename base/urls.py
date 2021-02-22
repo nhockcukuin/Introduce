@@ -4,6 +4,13 @@ from . import views
 urlpatterns = [
     path('',views.home,name='home'),
     path('posts/',views.posts,name='posts'),
-    path('post/',views.post,name='post'),
+    path('post/<slug:slug>/',views.post,name='post'),
     path('profile/',views.profile,name='profile'),
+
+    path('create_post/',views.createPost, name='create_post'),
+    path('update_post/<slug:slug>/',views.updatePost, name='update_post'),
+    path('delete_post/<slug:slug>/',views.deletePost, name='delete_post'),
+
+    
+    path('email_send',views.emailSend,name="email_send"),
 ]

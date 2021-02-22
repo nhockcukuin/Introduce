@@ -1,11 +1,22 @@
 {% extends 'base/main.html' %}
 {%load static%}
 {% block content %}
+<style type="text/css">
+	img{
+		max-width: 100%;
+		object-fit: cover;
+	}
 
+	.featured_image{
+		margin-top: 20px;
+		margin-bottom: 20px;
+	}
+</style>
     <div class="main-container">
-        <h1>Post Title</h1>
-        <img src="{%static 'images/1.jpg'%}" alt="">
-        <p>{% lorem 5 b random %}</p>
+        <h1>{{post.headline}}</h1>
+        <h4>{{post.sub_headline}}</h4>
+        <img src="{{post.thumbnail.url}}" alt="">
+        <p>{{post.body|linebreaks|safe}}</p>
     </div>
 
 {% endblock content %}
